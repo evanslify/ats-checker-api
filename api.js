@@ -32,6 +32,7 @@ var port = process.env.PORT || 4430;
 // });
 
 const server = http.createServer((req, res) => {
+    res.send('2');
   res.end();
 });
 server.on('clientError', (err, socket) => {
