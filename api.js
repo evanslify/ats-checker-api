@@ -16,6 +16,9 @@ var options = {
 
 
 app.use(bodyParser.json());
+app.get('/', function(req, res){
+    res.send('1');
+});
 app.post('/atscheck/', function(req, res){
     const target = req.body.url;
     check.startCheck(target, res);
