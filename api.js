@@ -4,6 +4,7 @@ var constants = require('constants');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var check = require('./openssl-test.js');
 
 
 var options = {
@@ -13,19 +14,13 @@ var options = {
     honorCipherOrder: true
 };
 
-var mock = {
-    'status': true,
-    'new_user': true,
-};
 
 app.use(bodyParser.json());
 app.post('/atscheck/', function(req, res){
-  console.log(req.body);
-  res.send(mock);
+    const target = req.body.url;
+    check.startCheck(target, res);
 });
 
-app.listen(80, function () {
-});
 
 var port = 443;
 https.createServer(options, app).listen(port, function(){
