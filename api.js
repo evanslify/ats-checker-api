@@ -21,8 +21,8 @@ app.post('/atscheck/', function(req, res){
     check.startCheck(target, res);
 });
 
-
-var port = 4430;
+// heroku says: thou shall not decide which port to use.
+var port = process.env.PORT || 4430;
 https.createServer(options, app).listen(port, function(){
     console.log("Express server listening on port " + port);
 });
